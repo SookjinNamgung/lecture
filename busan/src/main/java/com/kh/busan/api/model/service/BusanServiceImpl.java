@@ -16,7 +16,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class BusanServiceImpl implements BusanService {
 
-private final CommentMapper mapper;
+private final CommentMapper mapper; 
 	
 	@Override
 	public String getBusan(int page) {
@@ -60,6 +60,9 @@ private final CommentMapper mapper;
 
 	@Override
 	public void save(CommentDTO comment) {
+		if(comment.getWriter().equals("") || comment.getContent().equals("")) {
+			System.out.println("예외발생했어야함");
+		}
 		mapper.save(comment);
 	}
 
